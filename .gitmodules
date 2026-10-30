@@ -1,0 +1,6 @@
+[submodule "kits/herk-edit-kit"]
+	path = kits/herk-edit-kit
+	url = https://github.com/nateherkai/herk-edit-kit.git
+[submodule "kits/video-toolkit"]
+	path = kits/video-toolkit
+	url = https://github.com/digitalsamba/claude-code-video-toolkit.git
