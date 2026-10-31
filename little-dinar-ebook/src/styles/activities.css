@@ -363,3 +363,13 @@ details.example-box > :last-child { margin-block-end: 12px; }
 .neo-parent-logo { inline-size: 64px; block-size: auto; flex: none; }
 .neo-facts { margin: 4px 0 8px; padding-inline-start: 1.2em; }
 .neo-facts li { margin-block-end: 2px; }
+
+.neo-intro { border-radius: 18px; border: 3px solid var(--neo-teal); background: #fff; padding: 14px 16px; }
+.neo-intro-head { display: flex; align-items: center; gap: 14px; margin-block-end: 8px; }
+.neo-intro-logo { inline-size: 76px; block-size: auto; flex: none; }
+.neo-intro h2 { color: var(--neo-navy); font-size: 1.2rem; margin: 0; }
+.neo-intro-lead { margin: 2px 0 0; color: #3F4244; font-weight: 600; }
+.neo-features { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.neo-features li { display: flex; align-items: center; gap: 10px; color: #3F4244; line-height: 1.5; }
+.neo-features .circle-icon { border-color: var(--neo-yellow); }
+.neo-intro-note { margin: 10px 0 0; font-size: .82rem; color: var(--gb-grey); }

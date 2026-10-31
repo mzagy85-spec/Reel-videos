@@ -8,7 +8,7 @@ import { LanguageSelector } from '../app/LanguageSwitch';
 import { BrandArrow } from '../app/Brand';
 import { Icon } from '../app/Icons';
 import { playEffect } from '../lib/audio';
-import { NeoGuide } from '../app/Neo';
+import { NeoGuide, NeoIntro } from '../app/Neo';
 
 /** Page 1 of 15. Not a splash screen: it is a numbered page with the real controls. */
 export function CoverPage({ page, onGo }: ActivityProps) {
@@ -55,6 +55,7 @@ export function CoverPage({ page, onGo }: ActivityProps) {
             </button>
           </div>
           <p className="muted small">{t(page.instruction)}</p>
+          <NeoIntro />
         </div>
       </div>
       {revealing ? (

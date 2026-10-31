@@ -16,6 +16,7 @@ The book is built and tested as far as this environment allows (see `verificatio
 - **Illustration style.** Check `character-sheet.md` and `illustration-manifest.md`. Optional prompts are provided for commissioned raster art.
 
 ## neo (added after the first handoff)
+- **Cover section.** The cover (page 1) has a "What is the neo account?" section listing the account features in child-friendly words, including a plain explanation of interest. Its facts follow the same `showAccountFacts` switch and carry a "may change" note.
 - **Marketing.** Approve neo's draft guide lines on pages 1, 4, 6 and 15 as neo's voice. Approve the child-level "Meet the neo account" panel on page 9, and the use of the cinema-pose character.
 - **Brand.** Supply a neutral, high-resolution transparent neo character and the vector logo. Confirm the neo palette is used only inside neo elements.
 - **Compliance.** The neo facts shown to parents come from the July 2023 presentation, not from the live product page:

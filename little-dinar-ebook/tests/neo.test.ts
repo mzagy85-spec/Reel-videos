@@ -46,3 +46,20 @@ describe('neo', () => {
   });
   it('is switched on for this build', () => expect(neoConfig.enabled).toBe(true));
 });
+
+import { neoIntro } from '../src/content/neo';
+describe('neo cover introduction', () => {
+  it('is bilingual, explains interest in plain words, has a change note and no call to open', () => {
+    for (const f of neoIntro.features) expect(both(f.text)).toBe(true);
+    expect(both(neoIntro.title) && both(neoIntro.lead) && both(neoIntro.note)).toBe(true);
+    expect(neoIntro.features.some((f) => /interest: a small extra amount/.test(f.text.en))).toBe(true);
+    expect(neoIntro.note.en).toMatch(/may change/);
+    const all = JSON.stringify(neoIntro);
+    expect(all).not.toMatch(/open (it )?now|افتح الآن|افتح حساب/i);
+  });
+  it('facts match the parent information', () => {
+    const intro = neoIntro.features.map((f) => f.text.en).join(' ');
+    expect(intro).toContain('aged 0 to 14');
+    expect(intro).toContain('10 KWD');
+  });
+});

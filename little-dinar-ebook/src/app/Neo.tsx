@@ -9,7 +9,8 @@ import neoLogo from '../assets/neo/neo-logo.webp';
 import neoShapes from '../assets/neo/neo-shapes.webp';
 import neoCharacter from '../assets/neo/neo-character.webp';
 import { useT } from './i18n';
-import { neoConfig, neoCopy, neoGuide } from '../content/neo';
+import { neoConfig, neoCopy, neoGuide, neoIntro } from '../content/neo';
+import { CircleIcon } from './Icons';
 import type { PageId } from '../content/schema';
 
 export function NeoLogo({ className }: { className?: string }) {
@@ -83,6 +84,33 @@ export function NeoParentInfo({ headingLevel = 3 }: { headingLevel?: 3 | 4 }) {
       ) : null}
       <p className="muted small">{t(neoCopy.optional)}</p>
       <p className="small">{t(neoCopy.moreInfo)}: <bdi className="source-ref" dir="ltr" lang="en">{neoCopy.url}</bdi></p>
+    </section>
+  );
+}
+
+/** Cover introduction: what the neo account is and its features, in plain language. No call to open. */
+export function NeoIntro() {
+  const { t } = useT();
+  if (!neoConfig.enabled) return null;
+  const items = neoIntro.features.filter((f) => neoConfig.showAccountFacts || !f.fact);
+  return (
+    <section className="neo-intro" aria-labelledby="neo-intro-title">
+      <div className="neo-intro-head">
+        <NeoLogo className="neo-intro-logo" />
+        <div>
+          <h2 id="neo-intro-title">{t(neoIntro.title)}</h2>
+          <p className="neo-intro-lead">{t(neoIntro.lead)}</p>
+        </div>
+      </div>
+      <ul className="neo-features" role="list">
+        {items.map((f) => (
+          <li key={f.text.en}>
+            <CircleIcon name={f.icon} size={36} />
+            <span><bdi>{t(f.text)}</bdi></span>
+          </li>
+        ))}
+      </ul>
+      {neoConfig.showAccountFacts ? <p className="neo-intro-note">{t(neoIntro.note)}</p> : null}
     </section>
   );
 }

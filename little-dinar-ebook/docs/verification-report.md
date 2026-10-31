@@ -8,8 +8,8 @@ How to reproduce: run `npm test`, then `npm run build && npm run e2e`. For perfo
 
 | Area | Result |
 |---|---|
-| Unit tests (vitest) | **79 passed**, 0 failed (includes 8 neo checks) |
-| Browser end-to-end checks (`e2e/run-e2e.mjs`) | **84 passed**, 0 failed (includes 10 neo checks) |
+| Unit tests (vitest) | **81 passed**, 0 failed (includes 10 neo checks) |
+| Browser end-to-end checks (`e2e/run-e2e.mjs`) | **86 passed**, 0 failed (includes 12 neo checks) |
 | axe-core WCAG 2.0/2.1/2.2 A and AA rules, 15 pages × 2 languages | **0 violations** |
 | Native iOS WKWebView / Android WebView | **Not tested**: no access to the bank's apps or test harness |
 | Safari (desktop and iOS) | **Not tested**: only Chromium is available in this environment |

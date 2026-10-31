@@ -342,6 +342,11 @@ try {
       await go(page, n, lang);
       check(`neo guide with speech bubble on page ${n} (${lang})`, (await page.locator('.neo-guide .neo-character').count()) === 1 && (await page.locator('.neo-bubble').innerText()).length > 10);
     }
+    await go(page, 1, 'en');
+    const intro = await page.locator('.neo-intro').innerText();
+    check('Cover: "What is the neo account?" section with features and change note', intro.includes('What is the neo account?') && intro.includes('earns interest') && intro.includes('may change') && (await page.locator('.neo-features li').count()) === 5);
+    await go(page, 1, 'ar');
+    check('Cover (ar): neo section in Arabic', (await page.locator('.neo-intro').innerText()).includes('ما هو حساب neo؟'));
     await go(page, 2, 'en');
     check('neo guide is not on every page', (await page.locator('.neo-guide').count()) === 0);
     await go(page, 9, 'en');
