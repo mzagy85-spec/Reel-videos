@@ -1,0 +1,49 @@
+<!doctype html>
+<!--
+  Example only: how a Gulf Bank web page could embed the book.
+  Replace https://BOOK-ORIGIN/kids/money-book/ with the approved, bank-hosted URL.
+  The book's server must list this page's origin in frame-ancestors, and the book's index.html
+  must list it in allowedParentOrigins for the optional messages to work.
+-->
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>رحلة الدينار الصغير</title>
+  <style>
+    .ld-embed { max-width: 1280px; margin: 0 auto; padding: 0 16px; font-family: Cairo, Tahoma, sans-serif; }
+    .ld-frame { display: block; width: 100%; height: min(100dvh, 900px); min-height: 720px; border: 0; border-radius: 16px; background: #F3F3F3; }
+    @media (max-width: 760px) { .ld-embed { padding: 0; } .ld-frame { height: 100dvh; min-height: 0; border-radius: 0; } }
+    .ld-fallback { margin: 12px 0; }
+  </style>
+</head>
+<body>
+  <section class="ld-embed" aria-labelledby="ld-heading">
+    <h2 id="ld-heading">رحلة الدينار الصغير · The Little Dinar Journey</h2>
+    <iframe
+      class="ld-frame"
+      id="little-dinar"
+      title="رحلة الدينار الصغير: كتاب تفاعلي عن المال · The Little Dinar Journey: interactive money book"
+      src="https://BOOK-ORIGIN/kids/money-book/?lang=ar"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="autoplay 'none'; camera 'none'; microphone 'none'; geolocation 'none'; payment 'none'"
+    ></iframe>
+    <p class="ld-fallback">
+      <a href="https://BOOK-ORIGIN/kids/money-book/?lang=ar" target="_blank" rel="noopener">افتح الكتاب في صفحة مستقلة</a>
+      ·
+      <a href="https://BOOK-ORIGIN/kids/money-book/?lang=en" target="_blank" rel="noopener" lang="en">Open the book in its own page</a>
+    </p>
+  </section>
+  <script>
+    // Optional: listen for the book's events. Always check the origin.
+    (function () {
+      var BOOK_ORIGIN = 'https://BOOK-ORIGIN';
+      window.addEventListener('message', function (e) {
+        if (e.origin !== BOOK_ORIGIN || !e.data || typeof e.data.type !== 'string') return;
+        if (e.data.type === 'ld:close-request') { /* e.g. close a modal that holds the iframe */ }
+      });
+    })();
+  </script>
+</body>
+</html>

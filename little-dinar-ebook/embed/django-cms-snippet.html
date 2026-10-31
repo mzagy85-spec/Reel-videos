@@ -1,0 +1,17 @@
+{# Example Django CMS "Snippet" (or a template used by a simple plugin). Not tested against the bank's CMS. #}
+{# Replace BOOK_URL with the approved, bank-hosted URL of the book. Use ?lang=en on English pages. #}
+{% with BOOK_URL="https://BOOK-ORIGIN/kids/money-book/" %}
+<section class="ld-embed" aria-label="{% if LANGUAGE_CODE == 'ar' %}رحلة الدينار الصغير{% else %}The Little Dinar Journey{% endif %}">
+  <iframe
+    class="ld-frame"
+    title="{% if LANGUAGE_CODE == 'ar' %}رحلة الدينار الصغير: كتاب تفاعلي عن المال{% else %}The Little Dinar Journey: interactive money book{% endif %}"
+    src="{{ BOOK_URL }}?lang={% if LANGUAGE_CODE == 'ar' %}ar{% else %}en{% endif %}"
+    loading="lazy"
+    style="display:block;width:100%;height:min(100dvh,900px);min-height:720px;border:0;border-radius:16px"
+    allow="autoplay 'none'; camera 'none'; microphone 'none'; geolocation 'none'; payment 'none'"
+  ></iframe>
+  <p><a href="{{ BOOK_URL }}?lang={% if LANGUAGE_CODE == 'ar' %}ar{% else %}en{% endif %}" target="_blank" rel="noopener">
+    {% if LANGUAGE_CODE == 'ar' %}افتح الكتاب في صفحة مستقلة{% else %}Open the book in its own page{% endif %}
+  </a></p>
+</section>
+{% endwith %}

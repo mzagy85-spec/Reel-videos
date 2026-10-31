@@ -1,0 +1,31 @@
+{
+  "name": "little-dinar-ebook",
+  "private": true,
+  "version": "1.0.0",
+  "description": "رحلة الدينار الصغير / The Little Dinar Journey: an interactive bilingual financial-literacy e-book prepared for Gulf Bank (integration-ready, pending bank review).",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --port 4173",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "scripts:export": "vite-node scripts/export-docs.ts",
+    "e2e": "node e2e/run-e2e.mjs"
+  },
+  "dependencies": {
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.30",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "6.1.2",
+    "axe-core": "4.14.0",
+    "typescript": "5.9.3",
+    "vite": "8.3.5",
+    "vite-node": "6.0.0",
+    "vitest": "5.0.5"
+  }
+}

@@ -1,0 +1,37 @@
+/* Brand tokens: published RGB values from Gulf Bank Brand Guidelines 2026, PDF pages 14-15.
+   Contrast (checked in tests/contrast.test.ts):
+     blue #00248F on white 14.0:1 · body grey #5F6264 on white 6.2:1, on #F3F3F3 5.6:1
+     white on secondary red #CE0000 5.9:1 (OK for any text) · white on primary red #EF2B2D 3.9:1 (large text only)
+     secondary red #CE0000 on white 5.9:1 · primary red #EF2B2D on white 3.9:1 (large text / non-text only) */
+:root {
+  --gb-red: #EF2B2D;          /* primary background red */
+  --gb-red-2: #CE0000;        /* secondary red: buttons and small red text */
+  --gb-blue: #00248F;         /* corporate blue: headings, key numbers, icons */
+  --gb-grey: #5F6264;         /* body copy and sub-headlines */
+  --gb-grey-bg: #F3F3F3;      /* light background */
+  --gb-grey-graphic: #B7B9BC; /* graphical elements */
+  --white: #FFFFFF;
+
+  --ink: var(--gb-grey);
+  --heading: var(--gb-blue);
+  --surface: var(--white);
+  --page-bg: var(--gb-grey-bg);
+  --line: #DCDDDE;            /* tint of graphic grey for hairlines only (non-text, decorative) */
+  --focus: var(--gb-blue);
+
+  --icon-blue: var(--gb-blue);
+  --icon-red: var(--gb-red-2);
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 1px 2px rgba(0, 36, 143, .06), 0 10px 30px rgba(0, 36, 143, .08);
+  --tap: 48px;                /* minimum major touch target */
+  --space: clamp(14px, 2.2vw, 24px);
+  --t-fast: 200ms;
+  --t-mid: 320ms;
+  --font: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+  --xw-cell: clamp(24px, calc((100vw - 120px) / 11), 44px); /* 11 columns fit a 360px phone */
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --pager-h: calc(68px + var(--safe-bottom));
+}

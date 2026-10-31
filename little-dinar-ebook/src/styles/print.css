@@ -1,0 +1,32 @@
+/* Print: the static 15-page edition (one book page per sheet), or only the keepsake card. */
+.print-edition { display: none; }
+
+@media print {
+  @page { size: A4; margin: 14mm; }
+  html, body { background: #fff !important; }
+  .pager, .topbar, .skip-link, .drawer { display: none !important; }
+  * { animation: none !important; transition: none !important; }
+
+  html[data-print="book"] .book-main { display: none !important; }
+  html[data-print="book"] .print-edition { display: block; }
+  .print-page { break-after: page; page-break-after: always; font-size: 13pt; color: #333; }
+  .print-page:last-child { break-after: auto; }
+  .print-head { display: flex; justify-content: space-between; align-items: center; margin-block-end: 6mm; }
+  [dir="rtl"] .print-head { flex-direction: row-reverse; }
+  .print-num { font-weight: 700; color: #00248F; }
+  .print-logo { block-size: 9mm; inline-size: auto; }
+  .print-page h2 { font-size: 22pt; color: #00248F; }
+  .print-art { block-size: 95mm; overflow: hidden; border-radius: 4mm; margin-block-end: 5mm; }
+  .print-art svg { inline-size: 100%; block-size: 100%; }
+  .print-story { font-size: 14pt; line-height: 1.8; }
+  .print-activity { border: 1.5pt dashed #B7B9BC; padding: 3mm 4mm; border-radius: 3mm; }
+  .print-small, .print-alt, .print-explain { font-size: 10pt; color: #5F6264; }
+
+  html[data-print="card"] .book-main > * { display: none !important; }
+  html[data-print="card"] .book-main > .page { display: block !important; box-shadow: none; }
+  html[data-print="card"] .page > :not(.spread-text), html[data-print="card"] .spread-art { display: none !important; }
+  html[data-print="card"] .spread-text > :not(.activity), html[data-print="card"] .activity > :not(.completion) { display: none !important; }
+  html[data-print="card"] .completion > :not(.completion-card) { display: none !important; }
+  html[data-print="card"] .completion-card { display: block !important; box-shadow: none; margin: 20mm auto; max-inline-size: 150mm; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .cc-top { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

@@ -1,0 +1,6 @@
+/* Cairo, self-hosted from the supplied Cairo.zip (SIL Open Font License, see licenses/Cairo-OFL.txt).
+   Subset to Arabic, Arabic presentation forms and Latin, converted to WOFF2 with fontTools.
+   No external font requests are made at runtime. */
+@font-face { font-family: 'Cairo'; src: url('../assets/fonts/cairo-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Cairo'; src: url('../assets/fonts/cairo-SemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Cairo'; src: url('../assets/fonts/cairo-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
