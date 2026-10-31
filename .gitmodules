@@ -4,3 +4,6 @@
 [submodule "kits/video-toolkit"]
 	path = kits/video-toolkit
 	url = https://github.com/digitalsamba/claude-code-video-toolkit.git
+[submodule "kits/mg-styles-15"]
+	path = kits/mg-styles-15
+	url = https://github.com/Vincentwei1021/mg-styles-15.git
