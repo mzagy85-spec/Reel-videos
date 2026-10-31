@@ -50,7 +50,7 @@ export type ConceptId =
 
 export type SourceId =
   | 'brand-guide' | 'cbk-banknotes' | 'cbk-coins' | 'gb-phishing' | 'gb-diraya-2025'
-  | 'cbk-diraya-2021' | 'diraya-about' | 'cfpb-youth' | 'wcag22';
+  | 'cbk-diraya-2021' | 'diraya-about' | 'cfpb-youth' | 'wcag22' | 'neo-deck-2023' | 'gb-neo-page';
 
 export interface PageRecord {
   pageId: PageId;

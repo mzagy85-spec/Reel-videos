@@ -19,6 +19,7 @@ import { CardAtm } from '../activities/CardAtm';
 import { SafetyChoice } from '../activities/SafetyChoice';
 import { HelpChoice } from '../activities/HelpChoice';
 import { CompletionPage } from '../activities/CompletionPage';
+import { NeoGuide, NeoMeetPanel } from './Neo';
 
 // The two puzzles are the heaviest activities, so they load on demand.
 const MapPuzzle = lazy(() => import('../activities/MapPuzzle').then((m) => ({ default: m.MapPuzzle })));
@@ -74,6 +75,7 @@ export function PageRenderer({ page, onGo }: ActivityProps) {
             </p>
           ) : null}
         </div>
+        <NeoGuide pageId={page.pageId} />
         {page.explain ? (
           <details className="explain">
             <summary><Icon name="bulb" size={20} /><span>{t(ui.tellMeMore)}</span></summary>
@@ -85,6 +87,7 @@ export function PageRenderer({ page, onGo }: ActivityProps) {
           <Suspense fallback={<div className="activity-loading" aria-busy="true" />}>
             <Activity page={page} onGo={onGo} />
           </Suspense>
+          {page.pageId === 'bank-map' ? <NeoMeetPanel /> : null}
           {stamped && page.number !== 15 ? (
             <p className={`stamp-note ${justStamped ? 'is-new' : ''}`} role={justStamped ? 'status' : undefined}>
               <span className="stamp" aria-hidden="true"><Icon name="star" size={22} /></span>

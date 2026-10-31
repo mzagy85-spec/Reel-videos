@@ -5,6 +5,8 @@ import { sources } from '../content/sources';
 import { ResetProgress } from './SettingsDrawer';
 import { printBook } from './PrintEdition';
 import { useState } from 'react';
+import { NeoParentInfo } from './Neo';
+import { neoConfig, neoCopy } from '../content/neo';
 
 export function ParentDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { t, locale } = useT();
@@ -25,6 +27,8 @@ export function ParentDrawer({ open, onClose }: { open: boolean; onClose: () => 
       <h3>{t(parent.campaignTitle)}</h3>
       <p className="diraya-full">{t(diraya.full)}</p>
 
+      <NeoParentInfo />
+
       <h3>{t(parent.privacyTitle)}</h3>
       <p>{t(parent.privacy)}</p>
 
@@ -36,7 +40,7 @@ export function ParentDrawer({ open, onClose }: { open: boolean; onClose: () => 
 
       <h3>{t(parent.glossaryTitle)}</h3>
       <dl className="glossary">
-        {glossary.map((g) => (
+        {[...glossary, ...(neoConfig.enabled ? [{ term: neoCopy.glossaryTerm, def: neoCopy.glossaryDef }] : [])].map((g) => (
           <div key={g.term.en}>
             <dt>{t(g.term)}</dt>
             <dd>{t(g.def)}</dd>

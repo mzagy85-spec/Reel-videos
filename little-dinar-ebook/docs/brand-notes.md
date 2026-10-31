@@ -78,3 +78,36 @@ The guide asks for two-colour icons in corporate red and blue for website and ap
 - **AlDanah wave pattern (PDF page 17).** It belongs to AlDanah materials.
 - **Sonic logo (PDF page 12).** No authorised audio was supplied. Nothing imitates it.
 - **Diraya, CBK and KBA artwork.** None was supplied, so there are text credits only.
+
+## neo (Gulf Bank's children's savings account)
+
+Sources:
+- the supplied `NEO_presentation_202309_07.pdf` (BPG, July 2023), for the logo, palette, brand elements and copy;
+- the supplied "neo premiere" banner, for the character.
+
+**Logo.**
+- File: `src/assets/neo/neo-logo.webp`, the "neo / من بنك الخليج" version, taken from the presentation's final-logo page.
+- Processing: background keyed out and cropped to the coloured artwork. Nothing was redrawn or recoloured.
+- The presentation states its colours are #CE0000 and #00248F, used only for the logo. Both match the Gulf Bank UI tokens.
+- The source is a raster at about 220 ppi. Please supply the vector master.
+
+**Palette.**
+- Navy #020266, blue #00248F, royal #0000BC, teal #40C1AC, yellow #FFCA36, red #CE0000 and #EF2B2D, grey #E9E9E9, white.
+- Defined as `--neo-*` tokens and used only inside neo elements: the guide bubble, the page 9 panel and the parent information.
+- Gulf Bank stays the presenting brand everywhere else.
+
+**Brand elements.**
+- The geometric shape pattern ("option 1") is used as a small decorative band in the page 9 panel (`neo-shapes.webp`).
+- The doodle pattern ("option 2") is not used.
+
+**Character.**
+- File: `neo-character.webp`, cut out of the 880×440 banner with only the background removed.
+- The floating cup and cinema seat were dropped. The 3D glasses, popcorn and tickets are part of the character's pose, so they stay.
+- It is about 290 px tall, so it is shown at 96 to 110 CSS px and looks slightly soft on high-density screens.
+- It is the cinema ("neo premiere") version of neo. Please supply a neutral, high-resolution transparent master; the components pick it up with no code change.
+
+**Not used.**
+- The presentation's "Mascot" slide shows an earlier proposal that differs from the banner character.
+- The presentation's lifestyle photography, social posts and card visuals.
+
+**Dialogue.** neo's guide lines are draft copy written for this book (`src/content/neo.ts`). They restate the lessons and make no product claims. Marketing must approve or replace them.

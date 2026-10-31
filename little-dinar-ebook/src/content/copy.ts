@@ -469,8 +469,8 @@ export const parent = {
     en: 'Sound stays off until you turn it on. The soft sound effects are made on the device. Voice recordings of the story are still being prepared.',
   },
   notEndorsed: {
-    ar: 'هذا الكتاب لا يقدّم نصيحة مالية، ولا يعرض منتجات أو أسعارًا أو شروطًا.',
-    en: 'This book does not give financial advice and does not present products, rates or terms.',
+    ar: 'هذا الكتاب لا يقدّم نصيحة مالية. باستثناء معلومات اختيارية لأولياء الأمور عن حساب neo، لا يعرض منتجات أو أسعارًا أو شروطًا.',
+    en: 'This book does not give financial advice. Apart from optional information for parents about the neo account, it presents no products, rates or terms.',
   },
 } satisfies Dict;
 

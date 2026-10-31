@@ -11,7 +11,7 @@ function walk(v: unknown, path: string, out: string[]) {
     const o = v as Record<string, unknown>;
     if ('ar' in o && 'en' in o && Object.keys(o).length === 2 && (typeof o.ar === 'string' || o.ar === null)) {
       if (o.ar !== null && (!String(o.ar).trim() || !String(o.en).trim())) out.push(`${path}: empty translation`);
-      if (typeof o.ar === 'string' && /[A-Za-z]{3,}/.test(o.ar.replace(/\{\w+\}|Switch to English|English|KWD|OTP|PIN|WCAG/g, ''))) out.push(`${path}: Latin text inside Arabic`);
+      if (typeof o.ar === 'string' && /[A-Za-z]{3,}/.test(o.ar.replace(/\{\w+\}|Switch to English|English|KWD|OTP|PIN|WCAG|neo/g, ''))) out.push(`${path}: Latin text inside Arabic`);
       if (typeof o.en === 'string' && /[؀-ۿ]/.test(o.en) && !/العربية|التبديل/.test(o.en)) out.push(`${path}: Arabic text inside English`);
       return;
     }

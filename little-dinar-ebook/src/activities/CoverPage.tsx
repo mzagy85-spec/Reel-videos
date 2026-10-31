@@ -8,6 +8,7 @@ import { LanguageSelector } from '../app/LanguageSwitch';
 import { BrandArrow } from '../app/Brand';
 import { Icon } from '../app/Icons';
 import { playEffect } from '../lib/audio';
+import { NeoGuide } from '../app/Neo';
 
 /** Page 1 of 15. Not a splash screen: it is a numbered page with the real controls. */
 export function CoverPage({ page, onGo }: ActivityProps) {
@@ -36,6 +37,7 @@ export function CoverPage({ page, onGo }: ActivityProps) {
         </div>
         <div className="cover-panel">
           <p className="story">{t(page.story)}</p>
+          <NeoGuide pageId="cover" />
           <LanguageSelector />
           <div className="cover-actions">
             <button type="button" className="btn btn-primary btn-large" onClick={() => onGo(2)}>

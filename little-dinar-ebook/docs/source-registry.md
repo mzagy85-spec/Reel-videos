@@ -12,4 +12,6 @@ Generated from `src/content/sources.ts`. Reader-facing sources are shown in the 
 | Campaign overseen by CBK, managed by the Kuwait Banking Association, with banks taking part | https://www.cbk.gov.kw/en/cbk-news/announcements-and-press-releases/press-releases/2021/01/cbk-launching-diraya-financial-awareness-campaign | 2026-11-01 (brief); recheck before release | Compliance |
 | Description of the Diraya campaign | https://www.dirayakw.com/ar/about | 2026-11-01 (brief); recheck before release | Marketing / Compliance |
 | Age-appropriate money learning principles (general educational background only) | https://www.consumerfinance.gov/consumer-tools/educator-tool/youth-financial-education/learn/ | 2026-11-01 (brief); recheck before release | Editorial |
+| neo account: age range, opening amount, interest, how to open; logo and palette | Supplied file: NEO_presentation_202309_07.pdf (BPG, July 2023), pages 7-9, 17, 22-27; neo character from the supplied "neo premiere" banner | 2026-10-31 | Marketing / Compliance |
+| Current neo account terms | https://www.e-gulfbank.com/en/personal/accounts/youth-programs/neo-account/ (not reachable from the build environment; NOT yet checked) | pending | Compliance |
 | Accessibility standard WCAG 2.2 | https://www.w3.org/TR/WCAG22/ | 2026-11-01 (brief) | Accessibility |

@@ -15,6 +15,18 @@ The book is built and tested as far as this environment allows (see `verificatio
 - **Arrows and icons.** Check the arrow artwork extracted from guide page 18, and the original two-colour icon set.
 - **Illustration style.** Check `character-sheet.md` and `illustration-manifest.md`. Optional prompts are provided for commissioned raster art.
 
+## neo (added after the first handoff)
+- **Marketing.** Approve neo's draft guide lines on pages 1, 4, 6 and 15 as neo's voice. Approve the child-level "Meet the neo account" panel on page 9, and the use of the cinema-pose character.
+- **Brand.** Supply a neutral, high-resolution transparent neo character and the vector logo. Confirm the neo palette is used only inside neo elements.
+- **Compliance.** The neo facts shown to parents come from the July 2023 presentation, not from the live product page:
+  - ages 0 to 14;
+  - opening the account: 10 KWD;
+  - a savings account with interest;
+  - opened by a parent through the Gulf Bank app.
+
+  The live page `e-gulfbank.com/.../youth-programs/neo-account/` could not be reached from the build environment, so these must be checked against current terms. Two switches in `src/content/neo.ts` control what appears: `showAccountFacts: false` hides the facts, and `enabled: false` removes neo entirely.
+- **Policy.** Earlier the brief excluded product details unless Gulf Bank requested them; this was requested. Children see only a plain description and "Ask your parent or guardian". Facts and the URL are in parent-facing areas only, and the URL is plain text, not a link.
+
 ## Arabic and English editorial
 - **Copy.** Read every string in `src/content/pages.ts` and `src/content/copy.ts`. Check that the Arabic is natural Modern Standard Arabic for Kuwaiti children, that the selective diacritics are right, and that the English matches in meaning.
 - **Crossword clues.** Check the clues in `src/content/crossword.ts`. The Arabic grid is 11×6, for the reason given in `crossword-authoring.md`.

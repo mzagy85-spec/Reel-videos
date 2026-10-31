@@ -61,6 +61,20 @@ export const sources: SourceRecord[] = [
     owner: 'Editorial',
   },
   {
+    id: 'neo-deck-2023',
+    claim: { ar: 'حساب neo: الفئة العمرية ومبلغ الفتح والفوائد وطريقة الفتح، والشعار والألوان', en: 'neo account: age range, opening amount, interest, how to open; logo and palette' },
+    ref: 'Supplied file: NEO_presentation_202309_07.pdf (BPG, July 2023), pages 7-9, 17, 22-27; neo character from the supplied "neo premiere" banner',
+    reviewed: '2026-10-31',
+    owner: 'Marketing / Compliance',
+  },
+  {
+    id: 'gb-neo-page',
+    claim: { ar: 'الشروط الحالية لحساب neo', en: 'Current neo account terms' },
+    ref: 'https://www.e-gulfbank.com/en/personal/accounts/youth-programs/neo-account/ (not reachable from the build environment; NOT yet checked)',
+    reviewed: 'pending',
+    owner: 'Compliance',
+  },
+  {
     id: 'wcag22',
     claim: { ar: 'معيار إمكانية الوصول WCAG 2.2', en: 'Accessibility standard WCAG 2.2' },
     ref: 'https://www.w3.org/TR/WCAG22/',

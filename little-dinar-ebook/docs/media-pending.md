@@ -17,3 +17,5 @@
 | Neo character | Not supplied | The book does not depict Neo. If approved assets arrive, the guide role can be swapped in without changing the story logic. |
 | Real banknote/coin images | Not used | Learning tokens are labelled "Learning token, not a real coin". |
 | Sound effects | Done (synthesised on device) | Soft sine tones generated with Web Audio at runtime; off by default; not a brand sound. |
+| neo character master (transparent, high resolution, neutral pose) | **Needed** | Interim: cut out of the supplied 880×440 "neo premiere" banner (cinema props, about 290 px tall). Replace `src/assets/neo/neo-character.webp`. |
+| neo logo vector master | **Wanted** | Interim: raster from the 2023 presentation, background keyed out. Replace `src/assets/neo/neo-logo.webp`. |

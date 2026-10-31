@@ -8,8 +8,8 @@ How to reproduce: run `npm test`, then `npm run build && npm run e2e`. For perfo
 
 | Area | Result |
 |---|---|
-| Unit tests (vitest) | **71 passed**, 0 failed |
-| Browser end-to-end checks (`e2e/run-e2e.mjs`) | **74 passed**, 0 failed |
+| Unit tests (vitest) | **79 passed**, 0 failed (includes 8 neo checks) |
+| Browser end-to-end checks (`e2e/run-e2e.mjs`) | **84 passed**, 0 failed (includes 10 neo checks) |
 | axe-core WCAG 2.0/2.1/2.2 A and AA rules, 15 pages × 2 languages | **0 violations** |
 | Native iOS WKWebView / Android WebView | **Not tested**: no access to the bank's apps or test harness |
 | Safari (desktop and iOS) | **Not tested**: only Chromium is available in this environment |
@@ -146,3 +146,13 @@ Notes:
 - Narration audio: none exists yet, so there is no audio playback test beyond "no dead control" and stop-on-page-change wiring.
 - Field Web Vitals.
 - Editorial and compliance review of all copy (see handoff).
+
+## neo additions (second pass)
+
+- **Browser checks.**
+  - The neo guide and speech bubble appear on pages 1, 4, 6 and 15 in both languages, and not on other pages.
+  - The page 9 panel shows no terms or numbers, and the Arabic tagline appears in Arabic.
+  - The page 15 closing area and the parent drawer show the facts, the check-terms note and the glossary entry.
+  - The neo images load.
+  - axe still reports 0 violations on all 30 page views.
+- **Not verified.** The neo product facts have not been checked against the live Gulf Bank page, which was blocked by the build environment's network policy.

@@ -335,6 +335,30 @@ try {
     await noArt.ctx.close();
   });
 
+  /* ---------- neo ---------- */
+  await section(async () => {
+    const { ctx, page, errors } = await newPage();
+    for (const [n, lang] of [[1, 'ar'], [4, 'en'], [6, 'ar'], [15, 'en']]) {
+      await go(page, n, lang);
+      check(`neo guide with speech bubble on page ${n} (${lang})`, (await page.locator('.neo-guide .neo-character').count()) === 1 && (await page.locator('.neo-bubble').innerText()).length > 10);
+    }
+    await go(page, 2, 'en');
+    check('neo guide is not on every page', (await page.locator('.neo-guide').count()) === 0);
+    await go(page, 9, 'en');
+    const panel = await page.locator('.neo-panel').innerText();
+    check('Page 9: Meet the neo account panel, child-level, no terms', panel.includes('Meet the neo account') && !/KWD|interest|\d/.test(panel));
+    await go(page, 9, 'ar');
+    check('Page 9 (ar): neo tagline in Arabic', (await page.locator('.neo-tagline').innerText()).includes('دوم نكبر مع بعض'));
+    await go(page, 15, 'en');
+    const closing = await page.locator('.closing-info').innerText();
+    check('Page 15: neo parent information with facts and check-terms note', closing.includes('For children aged 0 to 14') && closing.includes('10 KWD') && closing.includes('check the current terms'));
+    await page.getByRole('button', { name: 'For parents' }).click();
+    const drawer = await page.locator('dialog[open]').innerText();
+    check('Parent drawer: neo account information and glossary entry', drawer.includes('The neo account from Gulf Bank') && drawer.includes('neo account') && drawer.includes('Apart from optional information'));
+    check('neo images load without errors', errors.length === 0 && (await page.evaluate(() => [...document.querySelectorAll('img.neo-logo, img.neo-character')].every((i) => i.complete && i.naturalWidth > 0))), errors.join(' | '));
+    await ctx.close();
+  });
+
   /* ---------- Motion ---------- */
   await section(async () => {
     const { ctx, page } = await newPage({ reducedMotion: 'reduce' });

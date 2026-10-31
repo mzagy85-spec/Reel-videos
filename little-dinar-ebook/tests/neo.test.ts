@@ -1,0 +1,48 @@
+import { describe, expect, it } from 'vitest';
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import { neoConfig, neoCopy, neoGuide, neoSources } from '../src/content/neo';
+import { pages } from '../src/content/pages';
+import { sources } from '../src/content/sources';
+
+const both = (x: { ar: string; en: string }) => x.ar.trim().length > 0 && x.en.trim().length > 0;
+
+describe('neo', () => {
+  it('guide lines exist for real pages, in both languages, without product terms', () => {
+    for (const [id, line] of Object.entries(neoGuide)) {
+      expect(pages.some((p) => p.pageId === id), id).toBe(true);
+      expect(both(line!)).toBe(true);
+      expect(`${line!.ar} ${line!.en}`).not.toMatch(/\d|KWD|د\.ك|interest|فوائد|افتح|open an account/i);
+    }
+  });
+  it('the child-level page 9 panel has no terms and no call to open', () => {
+    const kid = [neoCopy.meetTitle, neoCopy.meetText, neoCopy.meetAsk].map((x) => `${x.ar} ${x.en}`).join(' ');
+    expect(kid).not.toMatch(/\d|KWD|د\.ك|interest|فوائد|app|تطبيق|open now|افتح/i);
+  });
+  it('all neo copy is bilingual', () => {
+    for (const v of Object.values(neoCopy)) {
+      if (Array.isArray(v)) v.forEach((f) => expect(both(f)).toBe(true));
+      else if (typeof v === 'object') expect(both(v as { ar: string; en: string })).toBe(true);
+    }
+  });
+  it('product facts match the 2023 presentation and carry a check-current-terms note', () => {
+    const facts = neoCopy.facts.map((f) => f.en).join(' | ');
+    expect(facts).toContain('aged 0 to 14');
+    expect(facts).toContain('10 KWD');
+    expect(neoCopy.facts.map((f) => f.ar).join(' ')).toContain('10 د.ك.');
+    expect(neoCopy.factsNote.en).toMatch(/check the current terms/);
+    expect(neoCopy.optional.en).toMatch(/optional/i);
+  });
+  it('sources are registered, and the live page is marked as not yet checked', () => {
+    for (const id of neoSources) expect(sources.some((s) => s.id === id)).toBe(true);
+    expect(sources.find((s) => s.id === 'gb-neo-page')!.reviewed).toBe('pending');
+  });
+  it('neo artwork is supplied material only (logo, shapes, character)', () => {
+    expect(readdirSync('src/assets/neo').sort()).toEqual(['neo-character.webp', 'neo-logo.webp', 'neo-shapes.webp']);
+  });
+  it('the URL is shown as text, not a live link', () => {
+    const src = readFileSync(join('src', 'app', 'Neo.tsx'), 'utf8');
+    expect(src).not.toMatch(/<a\s/);
+  });
+  it('is switched on for this build', () => expect(neoConfig.enabled).toBe(true));
+});

@@ -7,6 +7,7 @@ Status: integration-ready build for a bank-controlled staging environment. It is
 - 15 numbered pages, one shared set of page ids, one language shown at a time (Arabic by default).
 - Every page has an illustrated scene and an activity; page 9 holds the Money Journey Map puzzle and page 14 the Money Words crossword.
 - All money is integer fils (1 KWD = 1000 fils). All prices and balances are fictional learning examples.
+- Includes neo, Gulf Bank's children's savings account: the neo character as a guide on four pages, a child-level panel on page 9, and account information for parents (`src/content/neo.ts`; product facts pending Compliance check).
 - Works with touch, mouse, keyboard and screen readers, with sound and motion off. No login, no personal data, no trackers, no external requests at runtime.
 
 ## Quick start

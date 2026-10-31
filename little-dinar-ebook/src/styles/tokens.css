@@ -35,3 +35,17 @@
   --safe-top: env(safe-area-inset-top, 0px);
   --pager-h: calc(68px + var(--safe-bottom));
 }
+
+/* neo palette, from the neo presentation (BPG, July 2023), "Color palette" pages.
+   Used only inside neo-branded elements (guide bubble, page 9 panel, parent information).
+   The neo logo itself uses #CE0000 and #00248F, matching --gb-red-2 and --gb-blue. */
+:root {
+  --neo-navy: #020266;
+  --neo-blue: #00248F;
+  --neo-royal: #0000BC;
+  --neo-teal: #40C1AC;
+  --neo-yellow: #FFCA36;
+  --neo-red: #CE0000;
+  --neo-red-2: #EF2B2D;
+  --neo-grey: #E9E9E9;
+}

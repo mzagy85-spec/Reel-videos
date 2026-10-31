@@ -11,6 +11,7 @@ import { ResetProgress } from '../app/SettingsDrawer';
 import { exportCardImage } from './cardExport';
 import { printCard } from '../app/PrintEdition';
 import { playEffect } from '../lib/audio';
+import { NeoParentInfo } from '../app/Neo';
 
 const HABITS: { id: HabitChoice; icon: 'target' | 'save' | 'receipt' }[] = [
   { id: 'setGoal', icon: 'target' },
@@ -80,6 +81,7 @@ export function CompletionPage({ onGo }: ActivityProps) {
       <aside className="closing-info" aria-labelledby="closing-title">
         <h3 id="closing-title">{t(c.infoTitle)}</h3>
         <p>{t(diraya.full)}</p>
+        <NeoParentInfo headingLevel={4} />
       </aside>
 
       <ResetProgress />
