@@ -8,8 +8,8 @@ How to reproduce: run `npm test`, then `npm run build && npm run e2e`. For perfo
 
 | Area | Result |
 |---|---|
-| Unit tests (vitest) | **81 passed**, 0 failed (includes 10 neo checks) |
-| Browser end-to-end checks (`e2e/run-e2e.mjs`) | **86 passed**, 0 failed (includes 12 neo checks) |
+| Unit tests (vitest) | **82 passed**, 0 failed (includes 11 neo checks) |
+| Browser end-to-end checks (`e2e/run-e2e.mjs`) | **89 passed**, 0 failed (includes 15 neo checks) |
 | axe-core WCAG 2.0/2.1/2.2 A and AA rules, 15 pages × 2 languages | **0 violations** |
 | Native iOS WKWebView / Android WebView | **Not tested**: no access to the bank's apps or test harness |
 | Safari (desktop and iOS) | **Not tested**: only Chromium is available in this environment |
@@ -156,3 +156,9 @@ Notes:
   - The neo images load.
   - axe still reports 0 violations on all 30 page views.
 - **Not verified.** The neo product facts have not been checked against the live Gulf Bank page, which was blocked by the build environment's network policy.
+
+## Official neo visuals (third pass)
+
+- Page 11 shows neo presenting the cards: the still frame under reduced motion, or the animation with a working "Watch neo again" button under full motion.
+- The cover shows the red and blue card designs, and all neo images load.
+- axe still reports 0 violations on all 30 page views.

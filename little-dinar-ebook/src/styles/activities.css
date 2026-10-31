@@ -373,3 +373,13 @@ details.example-box > :last-child { margin-block-end: 12px; }
 .neo-features li { display: flex; align-items: center; gap: 10px; color: #3F4244; line-height: 1.5; }
 .neo-features .circle-icon { border-color: var(--neo-yellow); }
 .neo-intro-note { margin: 10px 0 0; font-size: .82rem; color: var(--gb-grey); }
+.neo-guide-card { align-items: center; }
+.neo-card-show { display: inline-flex; flex-direction: column; align-items: center; flex: none; }
+.neo-character-card { inline-size: 170px; }
+.neo-replay { min-block-size: 44px; font-size: .85rem; }
+.neo-cards { display: inline-flex; gap: 10px; }
+.neo-cards img { display: block; inline-size: 64px; block-size: auto; border-radius: 6px; box-shadow: 0 4px 10px rgba(0, 36, 143, .15); }
+.neo-cards img + img { transform: translateY(8px); }
+.neo-intro-cards { margin-block-start: 12px; }
+.neo-parent-cards { margin-block: 4px 12px; }
+@media (max-width: 460px) { .neo-guide-card { flex-direction: column; align-items: flex-start; } .neo-guide-card .neo-bubble::before { display: none; } }

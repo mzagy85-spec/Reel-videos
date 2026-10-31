@@ -344,9 +344,13 @@ try {
     }
     await go(page, 1, 'en');
     const intro = await page.locator('.neo-intro').innerText();
-    check('Cover: "What is the neo account?" section with features and change note', intro.includes('What is the neo account?') && intro.includes('earns interest') && intro.includes('may change') && (await page.locator('.neo-features li').count()) === 5);
+    check('Cover: "What is the neo account?" section with features and change note', intro.includes('What is the neo account?') && intro.includes('earns interest') && intro.includes('may change') && (await page.locator('.neo-features li').count()) === 6);
     await go(page, 1, 'ar');
     check('Cover (ar): neo section in Arabic', (await page.locator('.neo-intro').innerText()).includes('ما هو حساب neo؟'));
+    await go(page, 11, 'en');
+    check('Page 11: neo presents the cards (still frame under reduced motion, no replay button)', (await page.locator('.neo-guide-card img').getAttribute('src')).includes('still') && (await page.locator('.neo-replay').count()) === 0 && (await page.locator('.neo-bubble').innerText()).includes('neo debit card'));
+    await go(page, 1, 'en');
+    check('Cover: official red and blue neo card designs shown', (await page.locator('.neo-intro .neo-cards img').count()) === 2 && (await page.evaluate(() => [...document.querySelectorAll('.neo-cards img')].every((i) => i.complete && i.naturalWidth > 0))));
     await go(page, 2, 'en');
     check('neo guide is not on every page', (await page.locator('.neo-guide').count()) === 0);
     await go(page, 9, 'en');
@@ -373,6 +377,12 @@ try {
     check('Reduced motion: no ambient animation runs', anim === 0, anim);
     await ctx.close();
     const full = await newPage({ reducedMotion: 'no-preference' });
+    await go(full.page, 11, 'en');
+    await full.page.waitForTimeout(500);
+    const animSrc = await full.page.locator('.neo-guide-card img').getAttribute('src');
+    await full.page.locator('.neo-replay').click();
+    const replaySrc = await full.page.locator('.neo-guide-card img').getAttribute('src');
+    check('Full motion: neo card animation plays and can be replayed', !animSrc.includes('still') && animSrc !== replaySrc);
     await go(full.page, 1, 'en');
     await full.page.waitForTimeout(800);
     const anim2 = await full.page.evaluate(() => [...document.querySelectorAll('.amb-drift, .amb-bob')].map((e) => getComputedStyle(e).animationName).filter((n) => n !== 'none').length);

@@ -6,6 +6,9 @@
 // environment, so the product facts below are NOT yet checked against current terms. Compliance must confirm
 // them before release. Set `showAccountFacts: false` to hide the facts and keep only the general mention.
 //
+// Official visuals supplied by Gulf Bank (standing neo, neo presenting the cards, red and blue debit card designs)
+// replace the interim cut-out from the "neo premiere" banner.
+//
 // The guide lines are DRAFT dialogue written for this book. They restate the book's lessons and make no
 // product claims. Marketing must approve them as neo's voice, or replace them.
 
@@ -32,6 +35,10 @@ export const neoGuide: Partial<Record<PageId, L10n>> = {
     ar: 'أدّخر قليلًا كل أسبوع، فيقترب هدفي خطوة بعد خطوة.',
     en: 'I save a little every week, and my goal gets closer step by step.',
   },
+  'card-atm': {
+    ar: 'هذه بطاقة السحب من neo. عندما ندفع بها، يُؤخذ المال من الرصيد الموجود في الحساب.',
+    en: 'This is a neo debit card. When we pay with it, the money comes from the balance in the account.',
+  },
   'my-step': {
     ar: 'أحسنت! خطوة صغيرة اليوم، وتكبر معك كل يوم.',
     en: 'Well done! One small step today, and it grows with you every day.',
@@ -41,9 +48,18 @@ export const neoGuide: Partial<Record<PageId, L10n>> = {
 export const neoCopy = {
   name: { ar: 'neo', en: 'neo' },
   characterAlt: {
-    ar: 'neo، شخصية بنك الخليج الحمراء، يحمل الفشار وتذاكر السينما ويبتسم.',
-    en: "neo, Gulf Bank's red character, smiling with popcorn and cinema tickets.",
+    ar: 'neo، شخصية بنك الخليج الحمراء، يبتسم ويمشي بحذاء رياضي أزرق.',
+    en: "neo, Gulf Bank's red character, smiling and walking in blue trainers.",
   },
+  cardShowAlt: {
+    ar: 'neo يبتسم ويعرض بطاقتي السحب من neo باللونين الأحمر والأزرق.',
+    en: 'neo smiles and shows the red and blue neo debit cards.',
+  },
+  cardsAlt: {
+    ar: 'تصميما بطاقة السحب من neo: الأحمر والأزرق.',
+    en: 'The two neo debit card designs: red and blue.',
+  },
+  replay: { ar: 'شاهد neo مرة أخرى', en: 'Watch neo again' },
   logoAlt: { ar: 'شعار neo من بنك الخليج', en: 'neo from Gulf Bank logo' },
   says: { ar: 'يقول neo', en: 'neo says' },
   /** Brand line from the 2023 presentation. Arabic only; no approved English line was supplied. */
@@ -69,6 +85,7 @@ export const neoCopy = {
     { ar: 'فتح الحساب: 10 د.ك.', en: 'Opening the account: 10 KWD' },
     { ar: 'حساب توفير مع فوائد', en: 'A savings account that earns interest' },
     { ar: 'يفتحه وليّ الأمر عبر تطبيق بنك الخليج', en: 'Opened by a parent or guardian through the Gulf Bank app' },
+    { ar: 'بطاقة سحب من neo بتصميمين: أحمر وأزرق', en: 'A neo debit card in two designs: red and blue' },
   ] as L10n[],
   factsNote: {
     ar: 'المعلومات من مواد حساب neo لعام 2023. يُرجى التأكد من الشروط الحالية لدى بنك الخليج قبل فتح أي حساب.',
@@ -100,8 +117,9 @@ export const neoIntro = {
     { icon: 'save', fact: true, text: { ar: 'حساب توفير يُفتح بمبلغ 10 د.ك.', en: 'A savings account that opens with 10 KWD.' } },
     { icon: 'star', fact: true, text: { ar: 'يحصل على فوائد: مبلغ صغير إضافي يضيفه البنك إلى المدخرات مع الوقت.', en: 'It earns interest: a small extra amount the bank adds to savings over time.' } },
     { icon: 'account', fact: true, text: { ar: 'يُفتح عبر تطبيق بنك الخليج.', en: 'It is opened through the Gulf Bank app.' } },
+    { icon: 'card', fact: true, text: { ar: 'لحساب neo بطاقة سحب خاصة، باللون الأحمر أو الأزرق.', en: 'neo has its own debit card, in red or blue.' } },
     { icon: 'target', fact: false, text: { ar: 'يساعد الأطفال على التدرّب على اتخاذ قراراتهم المالية.', en: 'It helps children practise making their own money choices.' } },
-  ] as { icon: 'parents' | 'save' | 'star' | 'account' | 'target'; fact: boolean; text: L10n }[],
+  ] as { icon: 'parents' | 'save' | 'star' | 'account' | 'card' | 'target'; fact: boolean; text: L10n }[],
   note: {
     ar: 'التفاصيل من مواد عام 2023 وقد تتغيّر. يمكن لوليّ الأمر التأكد من أحدث الشروط لدى بنك الخليج. الكتاب لا يتطلّب فتح أي حساب.',
     en: 'Details are from 2023 materials and may change. A grown-up can check the latest terms with Gulf Bank. The book does not require opening any account.',

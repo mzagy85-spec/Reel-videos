@@ -12,7 +12,7 @@ describe('neo', () => {
     for (const [id, line] of Object.entries(neoGuide)) {
       expect(pages.some((p) => p.pageId === id), id).toBe(true);
       expect(both(line!)).toBe(true);
-      expect(`${line!.ar} ${line!.en}`).not.toMatch(/\d|KWD|د\.ك|interest|فوائد|افتح|open an account/i);
+      expect(`${line!.ar} ${line!.en}`).not.toMatch(/\d|KWD|د\.ك|interest|فوائد|افتح|open an account|apply|اطلب/i);
     }
   });
   it('the child-level page 9 panel has no terms and no call to open', () => {
@@ -37,8 +37,8 @@ describe('neo', () => {
     for (const id of neoSources) expect(sources.some((s) => s.id === id)).toBe(true);
     expect(sources.find((s) => s.id === 'gb-neo-page')!.reviewed).toBe('pending');
   });
-  it('neo artwork is supplied material only (logo, shapes, character)', () => {
-    expect(readdirSync('src/assets/neo').sort()).toEqual(['neo-character.webp', 'neo-logo.webp', 'neo-shapes.webp']);
+  it('neo artwork is supplied material only (logo, shapes, official character, card animation, card designs)', () => {
+    expect(readdirSync('src/assets/neo').sort()).toEqual(['neo-card-blue.webp', 'neo-card-red.webp', 'neo-card-show-still.webp', 'neo-card-show.webp', 'neo-character.webp', 'neo-logo.webp', 'neo-shapes.webp']);
   });
   it('the URL is shown as text, not a live link', () => {
     const src = readFileSync(join('src', 'app', 'Neo.tsx'), 'utf8');
@@ -48,6 +48,16 @@ describe('neo', () => {
 });
 
 import { neoIntro } from '../src/content/neo';
+describe('neo animation', () => {
+  it('plays once (loop count 1) and has a still frame for reduced motion', () => {
+    const buf = readFileSync('src/assets/neo/neo-card-show.webp');
+    const i = buf.indexOf('ANIM');
+    expect(i).toBeGreaterThan(0);
+    expect(buf.readUInt16LE(i + 8 + 4)).toBe(1); // ANIM chunk: background colour (4 bytes) then loop count
+    expect(readdirSync('src/assets/neo')).toContain('neo-card-show-still.webp');
+  });
+});
+
 describe('neo cover introduction', () => {
   it('is bilingual, explains interest in plain words, has a change note and no call to open', () => {
     for (const f of neoIntro.features) expect(both(f.text)).toBe(true);
@@ -61,5 +71,6 @@ describe('neo cover introduction', () => {
     const intro = neoIntro.features.map((f) => f.text.en).join(' ');
     expect(intro).toContain('aged 0 to 14');
     expect(intro).toContain('10 KWD');
+    expect(intro).toContain('debit card');
   });
 });

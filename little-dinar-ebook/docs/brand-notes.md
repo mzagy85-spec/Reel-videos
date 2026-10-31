@@ -111,3 +111,17 @@ Sources:
 - The presentation's lifestyle photography, social posts and card visuals.
 
 **Dialogue.** neo's guide lines are draft copy written for this book (`src/content/neo.ts`). They restate the lessons and make no product claims. Marketing must approve or replace them.
+
+### Official neo visuals (supplied later; they replace the interim banner cut-out)
+
+| File | Source | Processing | Where it appears |
+|---|---|---|---|
+| `neo-character.webp` (373×480) | Official standing neo (1125×1424 JPG, white background) | White background connected to the edges removed; gloves and socks kept; downscaled | Guide on pages 1, 4, 6 and 15; page 9 panel |
+| `neo-card-show.webp` (340×285, 51 frames, 4 s) | Official animation of neo presenting the cards (1080×850 GIF, 102 frames) | White background and floor shadow removed per frame; every second frame kept at 80 ms; plays once | Guide on page 11 ("A card uses real money"), with a "Watch neo again" button |
+| `neo-card-show-still.webp` | First frame of the animation | Same processing | Page 11 when reduced motion is on |
+| `neo-card-red.webp`, `neo-card-blue.webp` (240×378) | Official neo debit card designs (transparent PNG) | Downscaled only | Cover "What is the neo account?" section; parent information |
+
+Notes:
+- **Motion.** The animation runs 4 seconds, so it needs no pause control (WCAG 2.2.2 applies to motion over 5 seconds), and it never loops endlessly.
+- **Weight.** The animation is 719 KB and loads only on page 11, only when full motion is on.
+- **Card artwork.** The card designs show the Mastercard mark and the word "debit" exactly as supplied. They carry no card numbers or names.
