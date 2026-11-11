@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>The Little Dinar Journey: draft for approval</title>
+<style>
+@font-face { font-family: Cairo; src: url(fonts/cairo-Regular.woff2) format('woff2'); font-weight: 400; }
+@font-face { font-family: Cairo; src: url(fonts/cairo-SemiBold.woff2) format('woff2'); font-weight: 600; }
+@font-face { font-family: Cairo; src: url(fonts/cairo-Bold.woff2) format('woff2'); font-weight: 700; }
+:root { --red: #EF2B2D; --red2: #CE0000; --blue: #00248F; --grey: #5F6264; --bg: #F3F3F3; --line: #DCDDDE; --teal: #40C1AC; --yellow: #FFCA36; --navy: #020266; --ink: #3F4244; }
+@page { size: 1280px 720px; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: Cairo, sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.slide { width: 1280px; height: 720px; position: relative; overflow: hidden; background: #fff; page-break-after: always; break-after: page; padding: 54px 64px 48px; }
+.slide:last-child { page-break-after: auto; break-after: auto; }
+h1, h2, h3 { color: var(--blue); margin: 0; line-height: 1.25; }
+h2 { font-size: 34px; margin-bottom: 6px; }
+.kicker { font-size: 15px; font-weight: 700; color: var(--red2); letter-spacing: .02em; margin: 0 0 6px; }
+.lead { font-size: 19px; color: var(--grey); margin: 0 0 22px; max-width: 980px; line-height: 1.5; }
+p { margin: 0 0 10px; line-height: 1.55; }
+ul { margin: 0; padding-left: 20px; }
+li { margin: 0 0 8px; line-height: 1.5; font-size: 17px; }
+.footer { position: absolute; left: 64px; right: 64px; bottom: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--grey); }
+.footer img { height: 20px; }
+.num { font-weight: 700; color: var(--blue); }
+.shot { border-radius: 12px; box-shadow: 0 2px 4px rgba(0,36,143,.08), 0 12px 32px rgba(0,36,143,.14); border: 1px solid var(--line); display: block; background: #fff; }
+.phone { border-radius: 22px; border: 6px solid #1d1f23; box-shadow: 0 12px 30px rgba(0,0,0,.18); display: block; }
+.cols { display: grid; gap: 36px; }
+.tag { display: inline-block; font-size: 13px; font-weight: 700; padding: 3px 12px; border-radius: 999px; background: var(--bg); color: var(--blue); margin-right: 6px; }
+.box { background: var(--bg); border-radius: 16px; padding: 18px 22px; }
+.box h3 { font-size: 20px; margin-bottom: 8px; }
+.cap { font-size: 13px; color: var(--grey); margin-top: 8px; line-height: 1.4; }
+
+/* cover */
+.cover { padding: 0; display: grid; grid-template-columns: 560px 1fr; }
+.cover-left { background: var(--red); color: #fff; padding: 60px 56px; position: relative; }
+.cover-left .logo { height: 46px; }
+.cover-left h1 { color: #fff; font-size: 54px; margin: 70px 0 6px; }
+.cover-left .ar { font-size: 40px; font-weight: 700; margin: 0 0 18px; direction: rtl; text-align: left; }
+.cover-left .sub { font-size: 21px; font-weight: 600; margin: 0 0 30px; line-height: 1.45; }
+.cover-left .meta { position: absolute; left: 56px; bottom: 54px; font-size: 16px; font-weight: 600; line-height: 1.6; }
+.cover-left .badge { display: inline-block; background: #fff; color: var(--red2); font-weight: 700; font-size: 15px; padding: 5px 14px; border-radius: 999px; margin-bottom: 14px; }
+.cover-left .arrows { position: absolute; right: 40px; bottom: 50px; width: 120px; }
+.cover-right { background: var(--bg); display: flex; align-items: center; justify-content: center; padding: 40px; }
+.cover-right img { width: 640px; }
+
+/* stats */
+.stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin: 6px 0 26px; }
+.stat { background: var(--bg); border-radius: 14px; padding: 16px 16px 14px; }
+.stat b { display: block; font-size: 34px; color: var(--blue); line-height: 1.1; }
+.stat span { font-size: 14px; color: var(--grey); }
+.ask { border: 3px solid var(--red2); border-radius: 16px; padding: 18px 24px; }
+.ask h3 { color: var(--red2); font-size: 21px; margin-bottom: 6px; }
+
+/* storyboard */
+.grid15 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px 16px; margin-top: 4px; }
+.thumb img { width: 100%; height: 118px; object-fit: cover; object-position: top left; border-radius: 8px; border: 1px solid var(--line); display: block; }
+.thumb div { font-size: 13px; line-height: 1.35; margin-top: 5px; color: var(--ink); }
+.thumb div b { color: var(--red2); margin-right: 4px; }
+
+/* activities */
+.acts { display: grid; grid-template-columns: 1.05fr 1fr 1fr; gap: 20px; align-items: start; }
+.acts img { width: 100%; }
+
+.acts4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.acts4 img.crop { width: 100%; height: auto; }
+/* tiles */
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.tile { background: var(--bg); border-radius: 16px; padding: 22px 24px; min-height: 190px; }
+.tile b { display: block; font-size: 40px; color: var(--blue); line-height: 1.1; }
+.tile .t { font-weight: 700; color: var(--ink); font-size: 19px; margin: 4px 0 4px; }
+.tile .d { font-size: 16px; color: var(--grey); line-height: 1.5; }
+
+/* lists */
+.req { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; }
+.req .item { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+.req .n { width: 34px; height: 34px; border-radius: 50%; background: var(--red2); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 16px; }
+.req .item b { display: block; color: var(--blue); font-size: 18px; }
+.req .item span { font-size: 15.5px; color: var(--grey); line-height: 1.5; display: block; }
+.owner { font-size: 12px !important; font-weight: 700; color: var(--red2) !important; margin-top: 2px; }
+
+.steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 18px; }
+.step { border-top: 5px solid var(--blue); background: var(--bg); border-radius: 10px; padding: 14px 14px 12px; }
+.step b { color: var(--red2); font-size: 15px; }
+.step h3 { font-size: 17px; margin: 4px 0 6px; }
+.step p { font-size: 13.5px; color: var(--grey); line-height: 1.45; margin: 0; }
+
+.neo-head { display: flex; align-items: center; gap: 18px; }
+.neo-head img { height: 64px; }
+.neo-grid { display: grid; grid-template-columns: 400px 1fr; gap: 30px; margin-top: 14px; }
+.pill-teal { background: #E7F7F4; color: var(--navy); }
+.check li::marker { color: var(--teal); }
+</style>
+</head>
+<body>
+
+<!-- 1. Cover -->
+<section class="slide cover">
+  <div class="cover-left">
+    <img class="logo" src="brand/gb-logo-white.svg" alt="Gulf Bank" />
+    <h1>The Little Dinar Journey</h1>
+    <p class="ar" lang="ar" dir="rtl">رحلة الدينار الصغير</p>
+    <p class="sub">An interactive money book for children in Kuwait, in Arabic and English, with neo</p>
+    <div class="meta">
+      <span class="badge">Draft for approval</span><br />
+      Supporting the Diraya financial awareness campaign<br />
+      November 2026
+    </div>
+    <img class="arrows" src="brand/arrows-double-blue-grey.webp" alt="" />
+  </div>
+  <div class="cover-right"><img class="shot" src="img/cover-en.jpg" alt="" /></div>
+</section>
+
+<!-- 2. Summary and ask -->
+<section class="slide">
+  <p class="kicker">SUMMARY</p>
+  <h2>A working draft is ready for your review</h2>
+  <p class="lead">Children read a short illustrated story about Hessa and Hamad, and on every page they try the idea themselves: counting fils, planning a budget, saving for a goal, using a bank account safely. neo, Gulf Bank's children's savings account, appears as a friendly guide.</p>
+  <div class="stats">
+    <div class="stat"><b>15</b><span>numbered pages, cover to finish</span></div>
+    <div class="stat"><b>2</b><span>languages, Arabic first, switch any time</span></div>
+    <div class="stat"><b>7–11</b><span>suggested reader age</span></div>
+    <div class="stat"><b>15–25</b><span>minutes for a first read</span></div>
+    <div class="stat"><b>0</b><span>personal data collected</span></div>
+  </div>
+  <div class="cols" style="grid-template-columns: 1.2fr 1fr;">
+    <div class="box">
+      <h3>What exists today</h3>
+      <ul>
+        <li>The full book works in a browser on phone, tablet and desktop.</li>
+        <li>It is built so the website and the iOS/Android apps can host it.</li>
+        <li>Automated checks pass for the money maths, both languages and accessibility.</li>
+      </ul>
+    </div>
+    <div class="ask">
+      <h3>What I am asking for</h3>
+      <p style="font-size:17px;">Approval of the direction, the story and the neo integration. After that I will request the remaining items (page 13) from the teams involved and finish the release version.</p>
+    </div>
+  </div>
+  <div class="footer"><span>The Little Dinar Journey · Draft for approval</span><span class="num">2</span></div>
+</section>
+
+<!-- 3. Reading experience -->
+<section class="slide">
+  <p class="kicker">THE READING EXPERIENCE</p>
+  <h2>One page at a time, like a picture book</h2>
+  <div class="cols" style="grid-template-columns: 640px 1fr; gap: 30px; margin-top: 18px; align-items: start;">
+    <div>
+      <img class="shot" src="img/en-p07.jpg" style="width:640px;" alt="" />
+      <p class="cap">Page 7 on desktop: the illustration sits beside the story, and the activity follows the text.</p>
+    </div>
+    <div style="display:grid; grid-template-columns: 160px 1fr; gap: 24px; align-items:start;">
+      <img class="phone" src="img/phone-ar-p2.jpg" style="width:160px;" alt="" />
+      <ul style="padding-left:18px;">
+        <li>Arabic is the default. One tap switches to English and keeps the page and all answers.</li>
+        <li>Each page has a short story, a hands-on activity and feedback that explains why.</li>
+        <li>No timers, scores or wrong-answer alarms. Every child reaches the end.</li>
+        <li>Sound and animation start off and can be turned on in Settings.</li>
+        <li>Works with touch, mouse, keyboard and screen readers.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer"><span>The Little Dinar Journey · Draft for approval</span><span class="num">3</span></div>
+</section>
+
+<!-- 4. Storyboard -->
+<section class="slide" style="padding-top:42px;">
+  <p class="kicker">THE 15 PAGES</p>
+  <h2 style="font-size:30px; margin-bottom:14px;">From the first dinar to a real habit</h2>
+  <div class="grid15">
+    <div class="thumb"><img src="img/cover-en.jpg" alt="" /><div><b>1</b>Cover and invitation</div></div>
+    <div class="thumb"><img src="img/en-p02.jpg" alt="" /><div><b>2</b>Making thoughtful money choices</div></div>
+    <div class="thumb"><img src="img/en-p03.jpg" alt="" /><div><b>3</b>Meet the Kuwaiti dinar</div></div>
+    <div class="thumb"><img src="img/en-p04.jpg" alt="" /><div><b>4</b>Do I need it or want it?</div></div>
+    <div class="thumb"><img src="img/en-p05.jpg" alt="" /><div><b>5</b>Give your money a plan</div></div>
+    <div class="thumb"><img src="img/en-p06.jpg" alt="" /><div><b>6</b>A goal worth saving for</div></div>
+    <div class="thumb"><img src="img/en-p07.jpg" alt="" /><div><b>7</b>Shop within your budget</div></div>
+    <div class="thumb"><img src="img/en-p08.jpg" alt="" /><div><b>8</b>Compare and check your change</div></div>
+    <div class="thumb"><img src="img/en-p09.jpg" alt="" /><div><b>9</b>What does a bank do? (map puzzle)</div></div>
+    <div class="thumb"><img src="img/en-p10.jpg" alt="" /><div><b>10</b>How does the balance change?</div></div>
+    <div class="thumb"><img src="img/en-p11.jpg" alt="" /><div><b>11</b>A card uses real money</div></div>
+    <div class="thumb"><img src="img/en-p12.jpg" alt="" /><div><b>12</b>Stop and ask for help</div></div>
+    <div class="thumb"><img src="img/en-p13.jpg" alt="" /><div><b>13</b>Help and care for what you have</div></div>
+    <div class="thumb"><img src="img/en-p14.jpg" alt="" /><div><b>14</b>Money Words crossword</div></div>
+    <div class="thumb"><img src="img/en-p15.jpg" alt="" /><div><b>15</b>My small step starts today</div></div>
+  </div>
+  <div class="footer"><span>Settings in Kuwait: the Corniche and Kuwait Towers, Souq Al-Mubarakiya, a cooperative store, a bank branch, family homes.</span><span class="num">4</span></div>
+</section>
+
+<!-- 5. Activities -->
+<section class="slide">
+  <p class="kicker">LEARNING BY DOING</p>
+  <h2>Every page has something to try</h2>
+  <p class="lead" style="margin-bottom:16px;">All amounts are fictional learning examples and are labelled that way. Money is calculated in whole fils, so the arithmetic is always exact.</p>
+  <div class="acts4">
+    <div><img class="shot crop" src="img/act-tokens.jpg" alt="" /><p class="cap"><b>Page 3.</b> Ten 100-fils learning tokens make one dinar (1.000 KWD).</p></div>
+    <div><img class="shot crop" src="img/act-shop.jpg" alt="" /><p class="cap"><b>Page 7.</b> The basket is 100 fils over budget, so paying is blocked until the stickers go back.</p></div>
+    <div><img class="shot crop" src="img/act-ledger.jpg" alt="" /><p class="cap"><b>Page 10.</b> Deposits and withdrawals move money between wallet and account. The total stays 5.000 KWD.</p></div>
+    <div><img class="shot crop" src="img/act-safety.jpg" alt="" /><p class="cap"><b>Page 12.</b> A practice message asks for a code. The safe answer: stop and tell a grown-up.</p></div>
+  </div>
+  <div class="footer"><span>The Little Dinar Journey · Draft for approval</span><span class="num">5</span></div>
+</section>
+
+<!-- 6. Games -->
+<section class="slide">
+  <p class="kicker">TWO GAMES</p>
+  <h2>A neighbourhood map puzzle and a bilingual crossword</h2>
+  <div class="cols" style="grid-template-columns: 1fr 1fr; margin-top: 18px;">
+    <div>
+      <img class="shot" src="img/act-map.jpg" style="width:100%; height:300px; object-fit:cover; object-position:top;" alt="" />
+      <img class="shot" src="img/act-missions.jpg" style="width:100%; margin-top:12px; height:110px; object-fit:cover; object-position:top;" alt="" />
+      <p class="cap"><b>Page 9, Money Journey Map.</b> Children assemble a Kuwaiti neighbourhood (tap, keyboard or drag), then match money missions to places: plan at home, compare prices at the co-op, deposit at the bank.</p>
+    </div>
+    <div>
+      <img class="shot" src="img/act-crossword-ar.jpg" style="width:100%;" alt="" />
+      <p class="cap"><b>Page 14, Money Words crossword.</b> A separate grid for each language, read right to left in Arabic. Children pick words from a word bank or type them; a clue list gives screen-reader users the same game. An optional four-question quiz follows.</p>
+    </div>
+  </div>
+  <div class="footer"><span>The Little Dinar Journey · Draft for approval</span><span class="num">6</span></div>
+</section>
+
+<!-- 7. neo -->
+<section class="slide">
+  <div class="neo-head"><img src="brand/neo-logo.webp" alt="neo" /><div><p class="kicker" style="margin:0;">NEO INTEGRATION</p><h2>neo guides children through the book</h2></div></div>
+  <div class="neo-grid">
+    <div>
+      <img class="shot" src="img/neo-intro-en.jpg" style="width:100%; height:440px; object-fit:cover; object-position:top;" alt="" />
+      <p class="cap"><b>Page 1.</b> "What is the neo account?" explains the account and its features in plain words, including what interest means.</p>
+    </div>
+    <div>
+      <div style="display:grid; grid-template-columns: 1fr; gap:6px;">
+        <div><img class="shot" src="img/neo-card-guide-en.jpg" style="height:140px; width:auto; max-width:100%;" alt="" /><p class="cap"><b>Page 11.</b> The official neo animation presents the red and blue debit cards.</p></div>
+        <div><img class="shot" src="img/neo-guide-cover.jpg" style="height:120px; width:auto; max-width:100%;" alt="" /><p class="cap"><b>Pages 1, 4, 6, 15.</b> neo's speech bubbles repeat the lesson.</p></div>
+      </div>
+      <ul class="check" style="margin-top:10px;">
+        <li style="font-size:16px;">Page 9 adds a "Meet the neo account" panel for children.</li>
+        <li style="font-size:16px;">Account details for parents sit in the parent section, with a note to check current terms.</li>
+        <li style="font-size:16px;">No "open an account" buttons anywhere. The account is presented as optional.</li>
+        <li style="font-size:16px;">Uses the official neo character, card designs, logo and colours.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer"><span>The Little Dinar Journey · Draft for approval</span><span class="num">7</span></div>
+</section>
+
+<!-- 8. Brand and Diraya -->
+<section class="slide">
+  <p class="kicker">BRAND AND CAMPAIGN</p>
+  <h2>Built on the Gulf Bank Brand Guidelines 2026</h2>
+  <div class="cols" style="grid-template-columns: 1fr 560px; margin-top: 18px;">
+    <div>
+      <ul>
+        <li><b>Logo:</b> the supplied vector artwork, top right on every page, never redrawn or recoloured.</li>
+        <li><b>Colours:</b> the published red, blue and grey values. Every text colour pairing passes contrast checks.</li>
+        <li><b>Type:</b> Cairo for Arabic and English, hosted with the book.</li>
+        <li><b>Brand arrows:</b> the real artwork from the guide, always pointing right or up.</li>
+        <li><b>Diraya:</b> text credit on the cover, the last page and the parent section, naming the Central Bank of Kuwait (oversight) and the Kuwait Banking Association (management). No invented campaign artwork, and no claim of CBK or KBA approval.</li>
+        <li><b>Illustrations:</b> original artwork for this book, with no third-party images and no AI-generated images.</li>
+      </ul>
+    </div>
+    <div><img class="shot" src="img/cover-ar.jpg" style="width:560px;" alt="" /><p class="cap">The Arabic cover with the short Diraya credit above the title.</p></div>
+  </div>
+  <div class="footer"><span>The Little Dinar Journey · Draft for approval</span><span class="num">8</span></div>
+</section>
+
+<!-- 9. Safety and privacy -->
+<section class="slide">
+  <p class="kicker">SAFE FOR CHILDREN AND FOR THE BANK</p>
+  <h2>Nothing a child does here touches real banking</h2>
+  <div class="tiles" style="margin-top: 22px;">
+    <div class="tile"><div class="t">No personal data</div><div class="d">The book never asks for a name, photo, age, email, phone or account number. Progress is saved on the device only if a parent turns it on.</div></div>
+    <div class="tile"><div class="t">No banking connection</div><div class="d">No login, no banking APIs, no real transactions, no payment screens and no PIN entry. Every simulation is labelled as one.</div></div>
+    <div class="tile"><div class="t">No tracking</div><div class="d">No analytics, ads or third-party scripts. The book loads nothing from outside the bank's own servers.</div></div>
+    <div class="tile"><div class="t">Correct money facts</div><div class="d">1 KWD = 1,000 fils, real coin values, no other currencies. Prices are marked as learning examples.</div></div>
+    <div class="tile"><div class="t">Calm safety lesson</div><div class="d">Children learn to stop, close a strange message and ask a parent, without fear and without sharing any code.</div></div>
+    <div class="tile"><div class="t">No pressure</div><div class="d">No timers, lives, leaderboards or purchases. A keepsake card at the end, not a certificate.</div></div>
+  </div>
+  <div class="footer"><span>The Little Dinar Journey · Draft for approval</span><span class="num">9</span></div>
+</section>
+
+<!-- 10. Quality -->
+<section class="slide">
+  <p class="kicker">QUALITY CHECKS</p>
+  <h2>Tested before review, with honest gaps</h2>
+  <div class="tiles" style="margin-top: 20px;">
+    <div class="tile"><b>82 / 82</b><div class="t">Unit tests passed</div><div class="d">Money maths, crossword grids, both languages complete, contrast, neo content.</div></div>
+    <div class="tile"><b>89 / 89</b><div class="t">Browser checks passed</div><div class="d">Every activity played through, language switching, saving progress, website embedding, printing.</div></div>
+    <div class="tile"><b>0</b><div class="t">Accessibility violations</div><div class="d">Automated WCAG 2.2 AA scan of all 15 pages in both languages.</div></div>
+    <div class="tile"><b>225 KB</b><div class="t">First load</div><div class="d">Target was 2 MB. Main content appears in about 1.3 s on a slow mobile connection.</div></div>
+    <div class="tile"><b>320 px</b><div class="t">Smallest screen tested</div><div class="d">No sideways scrolling from small phones to desktop, portrait and landscape.</div></div>
+    <div class="tile" style="background:#FFF4F4;"><div class="t" style="color:var(--red2);">Not tested yet</div><div class="d">Inside the real iOS and Android apps, on Safari, with screen-reader users, and with children. These need the bank's test access.</div></div>
+  </div>
+  <div class="footer"><span>The Little Dinar Journey · Draft for approval</span><span class="num">10</span></div>
+</section>
+
+<!-- 11. Delivery -->
+<section class="slide">
+  <p class="kicker">READY FOR THE WEBSITE AND THE APPS</p>
+  <h2>A self-contained package the bank's teams can host</h2>
+  <div class="cols" style="grid-template-columns: 1fr 1fr; margin-top: 20px;">
+    <div class="box">
+      <h3>Website</h3>
+      <ul>
+        <li>Static files, no server code. Can live at a path such as /kids/money-book/.</li>
+        <li>Can be embedded in an existing page, with a ready example (and a Django CMS snippet if that is the platform).</li>
+        <li>Security header settings documented for the web team.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>iOS and Android apps</h3>
+      <ul>
+        <li>Opens in the apps' existing web view. Guidance covers back and close buttons, screen edges, sound and downloads.</li>
+        <li>Works without any app changes. An optional close button and page events are available if the app team wants them.</li>
+        <li>App release stays with the app teams' normal process.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="box" style="margin-top:18px; background:#fff; border:2px dashed var(--line);">
+    <p style="margin:0; font-size:16px;"><b style="color:var(--blue);">Handover pack:</b> source code, production build, README, integration guide, brand notes, narration scripts for all 15 pages in both languages, verification report and a release checklist for each team.</p>
+  </div>
+  <div class="footer"><span>The Little Dinar Journey · Draft for approval</span><span class="num">11</span></div>
+</section>
+
+<!-- 12. Decisions -->
+<section class="slide">
+  <p class="kicker">DECISIONS FOR MANAGEMENT</p>
+  <h2>Five decisions to move forward</h2>
+  <div class="req" style="margin-top: 22px; grid-template-columns: 1fr;">
+    <div class="item"><div class="n">1</div><div><b>Approve the story, the characters (Hessa and Hamad) and the illustration style</b><span>The art is original drawn work. It can be upgraded later to commissioned 3D-style illustrations; ready briefs exist for every page.</span></div></div>
+    <div class="item"><div class="n">2</div><div><b>Approve how neo appears</b><span>Guide on five pages, a children's panel on page 9, and account details for parents only. neo's lines are a draft and need Marketing sign-off.</span></div></div>
+    <div class="item"><div class="n">3</div><div><b>Confirm whether account facts may appear</b><span>Ages 0 to 14, 10 KWD to open, interest, opened in the app, debit card. These come from 2023 materials. They can be hidden with one switch until Compliance confirms them.</span></div></div>
+    <div class="item"><div class="n">4</div><div><b>Choose narration for launch</b><span>Recorded human voice, licensed synthetic voice, or launch without audio. Scripts are ready either way.</span></div></div>
+    <div class="item"><div class="n">5</div><div><b>Confirm the digital logo master</b><span>The supplied logo file's colours differ slightly from the guide's published values. I kept the logo exactly as supplied.</span></div></div>
+  </div>
+  <div class="footer"><span>The Little Dinar Journey · Draft for approval</span><span class="num">12</span></div>
+</section>
+
+<!-- 13. Items requested -->
+<section class="slide">
+  <p class="kicker">ITEMS REQUESTED AFTER APPROVAL</p>
+  <h2>What I need to finish the release version</h2>
+  <div class="req" style="margin-top: 20px;">
+    <div class="item"><div class="n">1</div><div><b>Current neo account terms</b><span>Or access to the neo page on e-gulfbank.com, which was blocked from my working environment.</span><span class="owner">Compliance / Marketing</span></div></div>
+    <div class="item"><div class="n">2</div><div><b>Transparent neo master files</b><span>The standing character and the card animation without white backgrounds, plus the neo logo as a vector.</span><span class="owner">Brand</span></div></div>
+    <div class="item"><div class="n">3</div><div><b>Narration recordings or a voice decision</b><span>15 pages in Arabic and 15 in English, using the scripts provided.</span><span class="owner">Marketing</span></div></div>
+    <div class="item"><div class="n">4</div><div><b>Diraya campaign artwork (optional)</b><span>Only if a logo is wanted, from the approved media kit with its co-branding rules.</span><span class="owner">Marketing</span></div></div>
+    <div class="item"><div class="n">5</div><div><b>Editorial review of all text</b><span>Arabic and English story, activity and parent copy, plus neo's lines.</span><span class="owner">Arabic and English editorial</span></div></div>
+    <div class="item"><div class="n">6</div><div><b>Production web addresses</b><span>The website and app addresses that will host or embed the book, for the security settings.</span><span class="owner">Website / Information Security</span></div></div>
+    <div class="item"><div class="n">7</div><div><b>Test access to the iOS and Android apps</b><span>To check the book inside the real apps before release.</span><span class="owner">App teams</span></div></div>
+    <div class="item"><div class="n">8</div><div><b>Accessibility and child testing</b><span>A screen-reader review and a short session with children aged 7 to 11.</span><span class="owner">Accessibility / Marketing</span></div></div>
+  </div>
+  <div class="footer"><span>The Little Dinar Journey · Draft for approval</span><span class="num">13</span></div>
+</section>
+
+<!-- 14. Next steps -->
+<section class="slide">
+  <p class="kicker">NEXT STEPS</p>
+  <h2>From approval to release</h2>
+  <div class="steps">
+    <div class="step"><b>1</b><h3>Approval</h3><p>Management approves the draft and the five decisions.</p></div>
+    <div class="step"><b>2</b><h3>Collect items</h3><p>Teams send the items on page 13.</p></div>
+    <div class="step"><b>3</b><h3>Finish content</h3><p>Add final neo files, confirmed terms, narration and editorial changes.</p></div>
+    <div class="step"><b>4</b><h3>Staging</h3><p>Web team hosts the book on a bank test server; apps open it.</p></div>
+    <div class="step"><b>5</b><h3>Reviews</h3><p>Brand, Compliance, Information Security, Accessibility and a child test.</p></div>
+    <div class="step"><b>6</b><h3>Release</h3><p>Publish on the website and in the apps.</p></div>
+  </div>
+  <div class="cols" style="grid-template-columns: 1fr 300px; margin-top: 34px; align-items:center;">
+    <div class="ask">
+      <h3>Request</h3>
+      <p style="font-size:18px; margin:0;">Approve the draft so I can collect the items above and complete the release version of The Little Dinar Journey with neo.</p>
+    </div>
+    <div style="display:flex; align-items:flex-end; gap:12px; justify-content:center;">
+      <img src="brand/neo-character.webp" style="height:200px;" alt="" />
+      <img src="brand/neo-card-red.webp" style="height:120px; border-radius:8px;" alt="" />
+      <img src="brand/neo-card-blue.webp" style="height:120px; border-radius:8px; margin-bottom:12px;" alt="" />
+    </div>
+  </div>
+  <div class="footer"><span>The Little Dinar Journey · Draft for approval</span><span class="num">14</span></div>
+</section>
+
+</body>
+</html>

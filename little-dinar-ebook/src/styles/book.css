@@ -134,7 +134,8 @@
 .sound-toggle .icon { flex: none; }
 .lang-selector legend { font-size: 1rem; }
 @media (min-width: 900px) {
-  .cover-body { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; }
+  .cover-body { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; }
+  .cover-art { position: sticky; inset-block-start: 12px; }
 }
 .skip-reveal { position: absolute; inset-block-start: 12px; inset-inline-start: 50%; transform: translateX(-50%); z-index: 3; background: #fff; }
 [dir="rtl"] .skip-reveal { transform: translateX(50%); }
